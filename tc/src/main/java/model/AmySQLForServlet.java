@@ -3,6 +3,9 @@ package model;
 import models.Lecture;
 import models.Person;
 import models.Role;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import utility.IntTrue;
 import utility.utilityLog.LogFactory;
 
@@ -12,7 +15,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Component
+@Lazy
 public class AmySQLForServlet {
 
     private static final String BD_URL = "jdbc:mysql://localhost/online_school";

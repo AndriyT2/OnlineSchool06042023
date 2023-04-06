@@ -1,10 +1,15 @@
 import models.ResourceType;
 import models.Role;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import service.*;
 
 import java.io.IOException;
+@Configuration
+@ComponentScan
+public class Main11 {
 
-public class Main {
+
     public static void main(String[] args) throws IOException {
 
 
@@ -56,6 +61,9 @@ public class Main {
 
 
         System.out.println("\n=====================  Menu  ===========================================================\n");
+
+
+
         Menu menu = new Menu();
         menu.menu();
 

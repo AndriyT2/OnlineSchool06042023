@@ -4,19 +4,21 @@ import models.Course;
 import models.Lecture;
 import models.Person;
 import models.Role;
+import org.springframework.stereotype.Component;
 import repository.CourseRepository;
 import repository.LectureRepository;
 import repository.PersonRepository;
 import utility.ScannerThis;
 import utility.utilityLog.LogFactory;
 
-
+@Component
 public class CourseService {
     public Course createCourse() {
         return new Course();
     }
 
     public Course createCourse(String courseName) {
+        ctx
         Course course = new Course(courseName);
         CourseRepository.getInstance().getCourseList().add(course);
         int index = CourseRepository.getInstance().getCourseList().indexOf(course);

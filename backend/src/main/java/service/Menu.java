@@ -1,9 +1,19 @@
 package service;
 
+
+
 import models.AdditionalMaterials;
 import models.Course;
 import models.ModelsSuper;
 import models.Person;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import repository.*;
 import service.controlWork.ControlWork14;
 import utility.IntTrue;
@@ -16,14 +26,21 @@ import utility.server.SelectorServer;
 import utility.utilityLog.LogFactory;
 import utility.utilityLog.LogReader;
 import utility.utilityLog.LogWriter;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-
+@Component
+@ComponentScan("")
 public class Menu {
+
+    ApplicationContext ctx = new AnnotationConfigApplicationContext(Main11.class);
+
+
+
     public void menu() throws IOException {
+
+//        System.out.println(ctx.getDisplayName());
         LogFactory.debug(this.getClass().getName(), "CREATE NEW MENU");
         boolean exit = false;
         int answer;
@@ -130,7 +147,12 @@ public class Menu {
                 }
                 case 3 -> {
                     System.out.println("Введіть значення ID для курсу:");
+//                    System.out.println(new IntTrue());
+                    System.out.println(ctx.getBean(IntTrue.class));
+//                    int courseId = ctx.getBean(IntTrue.class)    getBean(IntTrue.class).intTrue();
+
                     int courseId = new IntTrue().intTrue();
+                   // int courseId = intTrueAutowire.intTrue();
                     Course course = CourseRepository.getInstance().getById(courseId);
                     System.out.println(course);
                 }
